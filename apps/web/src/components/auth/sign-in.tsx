@@ -6,6 +6,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import { Eye, EyeOff } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { toast } from 'sonner';
 
@@ -23,6 +24,7 @@ type SignInProps = {
 export function SignIn({ message, reason, next }: SignInProps) {
   const router = useRouter();
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
   const sessionExpiredShown = useRef(false);
 
   useEffect(() => {
@@ -98,13 +100,29 @@ export function SignIn({ message, reason, next }: SignInProps) {
               <label htmlFor="password" className="block text-base font-medium">
                 Password
               </label>
-              <input
-                id="password"
-                name="password"
-                type="password"
-                required
-                className="h-12 w-full rounded-lg border border-neutral-300 bg-white px-4 text-base outline-none transition focus:border-neutral-500"
-              />
+              <div className="relative">
+                <input
+                  id="password"
+                  name="password"
+                  type={showPassword ? 'text' : 'password'}
+                  required
+                  autoComplete="current-password"
+                  placeholder="Enter your password"
+                  className="h-12 w-full rounded-lg border border-neutral-300 bg-white py-0 pl-4 pr-12 text-base outline-none transition focus:border-neutral-500"
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword((v) => !v)}
+                  className="cursor-pointer absolute right-0 top-0 flex h-12 w-12 items-center justify-center text-neutral-500 transition hover:text-neutral-800"
+                  aria-label={showPassword ? 'Hide password' : 'Show password'}
+                >
+                  {showPassword ? (
+                    <EyeOff className="h-5 w-5" aria-hidden />
+                  ) : (
+                    <Eye className="h-5 w-5" aria-hidden />
+                  )}
+                </button>
+              </div>
             </div>
 
             <button
