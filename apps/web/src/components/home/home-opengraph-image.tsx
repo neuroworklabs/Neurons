@@ -6,6 +6,7 @@
 import { ImageResponse } from 'next/og';
 
 import {
+  HOME_OG_FONT_FAMILY,
   homeOpenGraphImageSize,
   loadHomeOpenGraphImageAssets,
   type OgImageAssets,
@@ -27,7 +28,7 @@ function HomeOpenGraphImageMarkup({ companyLogos }: HomeOpenGraphImageMarkupProp
         position: 'relative',
         overflow: 'hidden',
         background: 'linear-gradient(165deg, #f5f3ff 0%, #fcfcfd 45%, #f8f4ff 100%)',
-        fontFamily: 'Outfit',
+        fontFamily: HOME_OG_FONT_FAMILY,
         padding: '36px 48px 28px',
       }}
     >
@@ -177,10 +178,11 @@ function HomeOpenGraphImageMarkup({ companyLogos }: HomeOpenGraphImageMarkupProp
             marginTop: 10,
             color: '#171717',
             display: 'flex',
+            alignItems: 'baseline',
           }}
         >
-          <span>built by </span>
-          <span style={{ color: '#047857', fontWeight: 700 }}>Neurons</span>
+          <span>built by</span>
+          <span style={{ color: '#047857', fontWeight: 700, marginLeft: 12 }}>Neurons</span>
         </div>
 
         <p
@@ -219,18 +221,28 @@ function HomeOpenGraphImageMarkup({ companyLogos }: HomeOpenGraphImageMarkupProp
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              gap: 28,
+              gap: 18,
             }}
           >
             {companyLogos.map((logoSrc, index) => (
-              <img
+              <div
                 key={`company-logo-${index}`}
-                src={logoSrc}
-                alt=""
-                width={52}
-                height={52}
-                style={{ objectFit: 'contain', opacity: 0.92 }}
-              />
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  width: 52,
+                  height: 52,
+                }}
+              >
+                <img
+                  src={logoSrc}
+                  alt=""
+                  width={52}
+                  height={52}
+                  style={{ objectFit: 'contain', opacity: 0.92 }}
+                />
+              </div>
             ))}
           </div>
         </div>
@@ -240,9 +252,12 @@ function HomeOpenGraphImageMarkup({ companyLogos }: HomeOpenGraphImageMarkupProp
         style={{
           position: 'relative',
           zIndex: 1,
+          width: '100%',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
           fontSize: 15,
           color: '#737373',
-          textAlign: 'center',
         }}
       >
         ©2026 Neurowork Labs. All rights reserved
@@ -258,13 +273,13 @@ function buildImageResponse({ fonts, companyLogos }: OgImageAssets) {
       ...homeOpenGraphImageSize,
       fonts: [
         {
-          name: 'Outfit',
+          name: HOME_OG_FONT_FAMILY,
           data: fonts.regular,
           style: 'normal',
           weight: 400,
         },
         {
-          name: 'Outfit',
+          name: HOME_OG_FONT_FAMILY,
           data: fonts.semibold,
           style: 'normal',
           weight: 600,
