@@ -12,25 +12,26 @@ export default async function HomePage() {
   const auth = await safeGetUser();
   const isLoggedIn = Boolean(auth.user);
   const companyLogos = [
-    '/users/svg/1.svg',
-    '/users/svg/2.svg',
-    '/users/svg/3.svg',
-    '/users/svg/4.svg',
-    '/users/svg/5.svg',
-    '/users/svg/6.svg',
-    '/users/svg/7.svg',
-    '/users/svg/8.svg',
+    '/users/colorful/1.svg',
+    '/users/colorful/2.svg',
+    '/users/colorful/3.svg',
+    '/users/colorful/4.svg',
+    '/users/colorful/5.svg',
+    '/users/colorful/6.svg',
+    '/users/colorful/7.svg',
+    '/users/colorful/8.svg',
   ];
 
   return (
-    <main className="relative h-screen overflow-hidden bg-white text-neutral-950">
+    <main className="relative h-screen overflow-hidden text-neutral-950">
+      <div aria-hidden className="home-page-bg pointer-events-none absolute inset-0" />
       <div className="gradient-orbit" aria-hidden="true" />
       <div
-        className="pointer-events-none absolute inset-0 opacity-70 [background-image:radial-gradient(circle,_rgba(15,23,42,0.12)_1px,_transparent_1px)] [background-size:18px_18px]"
+        className="pointer-events-none absolute inset-0 z-[1] opacity-60 [background-image:radial-gradient(circle,_rgba(6,95,70,0.08)_1px,_transparent_1px)] [background-size:18px_18px]"
         aria-hidden="true"
       />
 
-      <header className="absolute left-1/2 top-4 z-20 flex w-[calc(100%-2rem)] max-w-5xl -translate-x-1/2 items-center justify-between rounded-full bg-white/75 px-5 py-3 text-sm font-medium font-plus-jakarta-sans shadow-md backdrop-blur-sm sm:w-[calc(100%-3rem)] sm:px-6">
+      <header className="absolute left-1/2 top-4 z-20 flex w-[calc(100%-2rem)] max-w-5xl -translate-x-1/2 items-center justify-between rounded-full border border-emerald-900/10 bg-white/70 px-5 py-3 text-sm font-medium font-plus-jakarta-sans shadow-[0_8px_32px_rgba(6,95,70,0.08)] backdrop-blur-md sm:w-[calc(100%-3rem)] sm:px-6">
         <div className="flex items-center gap-2">
           <NeuronsLogo className="h-[24px] w-12" />
           <div className="font-plus-jakarta-sans text-lg font-semibold tracking-tight sm:text-2xl">
@@ -40,25 +41,33 @@ export default async function HomePage() {
 
         <Link
           href={isLoggedIn ? '/dashboard' : '/auth/signup'}
-          className="inline-flex cursor-pointer items-center justify-center rounded-full border border-black bg-black px-5 py-2 text-sm font-semibold tracking-tight text-white font-plus-jakarta-sans shadow-sm transition hover:-translate-y-0.5 hover:bg-neutral-800 hover:shadow-md sm:text-base"
+          className="home-cta-gradient inline-flex cursor-pointer items-center justify-center rounded-full px-5 py-2 text-sm font-semibold tracking-tight text-white font-plus-jakarta-sans shadow-[0_4px_14px_rgba(6,95,70,0.35)] transition hover:-translate-y-0.5 hover:shadow-[0_6px_20px_rgba(6,95,70,0.45)] sm:text-base"
         >
           {isLoggedIn ? 'Dashboard' : 'Get Started'}
         </Link>
       </header>
 
-      <div className="relative mx-auto flex h-full w-full max-w-6xl flex-col px-4 pb-4 pt-24 font-plus-jakarta-sans sm:px-6 lg:px-8">
-        <section className="flex flex-1 flex-col items-center justify-center gap-8 py-4">
+      <div className="relative z-10 mx-auto flex h-full w-full max-w-6xl flex-col px-4 pb-4 pt-24 font-plus-jakarta-sans sm:px-6 lg:px-8">
+        <section className="flex flex-1 flex-col items-center justify-center gap-10 py-4">
           <div className="max-w-4xl text-center leading-tight">
-            <h1 className="font-plus-jakarta-sans text-3xl font-semibold text-neutral-900 sm:text-4xl md:text-5xl">
+            <p className="mb-5 inline-flex items-center rounded-full border border-emerald-900/10 bg-white/60 px-4 py-1.5 text-sm font-medium text-emerald-800 shadow-sm backdrop-blur-sm">
+              AI agent marketplace
+            </p>
+            <h1 className="font-plus-jakarta-sans text-3xl font-semibold text-neutral-900 sm:text-4xl md:text-5xl lg:text-[3.25rem]">
               <span className="block">Ready-to-deploy agents</span>
               <span className="mt-4 block">
-                built by <span className="text-orange-500">Neurons</span>
+                built by{' '}
+                <span className="home-hero-gradient font-bold">Neurons</span>
               </span>
             </h1>
+            <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-neutral-600 sm:text-lg">
+              A single-vendor AI agent marketplace from where anyone from anywhere in the
+              world can integrate agents in web applications or websites.
+            </p>
           </div>
 
           <div className="w-full max-w-4xl">
-            <p className="mb-5 text-center text-2xl font-semibold text-neutral-700 sm:text-3xl">
+            <p className="mb-5 text-center text-xl font-semibold text-neutral-700 sm:text-2xl">
               Used by
             </p>
             <div className="relative overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_12%,black_88%,transparent)]">
