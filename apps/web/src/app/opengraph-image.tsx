@@ -5,10 +5,12 @@
 
 import {
   createHomeOpenGraphImage,
+} from '@/components/home/home-opengraph-image';
+import {
   homeOpenGraphImageAlt,
   homeOpenGraphImageContentType,
   homeOpenGraphImageSize,
-} from '@/lib/site/home-opengraph-image';
+} from '@/lib/site/opengraph-image-config';
 
 export const runtime = 'nodejs';
 
