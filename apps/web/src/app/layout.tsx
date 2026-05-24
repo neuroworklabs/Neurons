@@ -4,6 +4,12 @@ import "./globals.css";
 import { SessionExpiredHandler } from "@/components/auth/session-expired-handler";
 import { AuthSuccessToaster } from "@/components/toast/auth-success-toaster";
 import { SonnerToaster } from "@/components/toast/sonner-toaster";
+import {
+  SITE_DESCRIPTION,
+  SITE_NAME,
+  SITE_OG_TITLE,
+  SITE_URL,
+} from "@/lib/site/site-config";
 
 const plusJakartaSans = Plus_Jakarta_Sans({
   variable: "--font-plus-jakarta-sans",
@@ -13,8 +19,25 @@ const plusJakartaSans = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Neurons",
-  description: "An agent marketplace from where anyone from anywhere in the world can integrate agents in web applications or websites.",
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: SITE_NAME,
+    template: `%s | ${SITE_NAME}`,
+  },
+  description: SITE_DESCRIPTION,
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: SITE_URL,
+    siteName: SITE_NAME,
+    title: SITE_OG_TITLE,
+    description: SITE_DESCRIPTION,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: SITE_OG_TITLE,
+    description: SITE_DESCRIPTION,
+  },
 };
 
 export default function RootLayout({
