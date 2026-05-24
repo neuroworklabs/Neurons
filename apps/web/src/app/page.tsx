@@ -5,6 +5,7 @@
 
 import Link from 'next/link';
 
+import { HomeCursorGradient } from '@/components/home/home-cursor-gradient';
 import { NeuronsLogo } from '@/components/brand/neurons-logo';
 import { safeGetUser } from '@/lib/auth/safe-get-user';
 
@@ -24,14 +25,13 @@ export default async function HomePage() {
 
   return (
     <main className="relative h-screen overflow-hidden text-neutral-950">
-      <div aria-hidden className="home-page-bg pointer-events-none absolute inset-0" />
-      <div className="gradient-orbit" aria-hidden="true" />
+      <HomeCursorGradient />
       <div
-        className="pointer-events-none absolute inset-0 z-[1] opacity-60 [background-image:radial-gradient(circle,_rgba(6,95,70,0.08)_1px,_transparent_1px)] [background-size:18px_18px]"
+        className="pointer-events-none absolute inset-0 z-[1] opacity-50 [background-image:radial-gradient(circle,_rgba(99,102,241,0.07)_1px,_transparent_1px)] [background-size:18px_18px]"
         aria-hidden="true"
       />
 
-      <header className="absolute left-1/2 top-4 z-20 flex w-[calc(100%-2rem)] max-w-5xl -translate-x-1/2 items-center justify-between rounded-full border border-emerald-900/10 bg-white/70 px-5 py-3 text-sm font-medium font-plus-jakarta-sans shadow-[0_8px_32px_rgba(6,95,70,0.08)] backdrop-blur-md sm:w-[calc(100%-3rem)] sm:px-6">
+      <header className="absolute left-1/2 top-4 z-20 flex w-[calc(100%-2rem)] max-w-5xl -translate-x-1/2 items-center justify-between rounded-full border border-indigo-200/40 bg-white/70 px-5 py-3 text-sm font-medium font-plus-jakarta-sans shadow-[0_8px_32px_rgba(99,102,241,0.08)] backdrop-blur-md sm:w-[calc(100%-3rem)] sm:px-6">
         <div className="flex items-center gap-2">
           <NeuronsLogo className="h-[24px] w-12" />
           <div className="font-plus-jakarta-sans text-lg font-semibold tracking-tight sm:text-2xl">
@@ -41,7 +41,7 @@ export default async function HomePage() {
 
         <Link
           href={isLoggedIn ? '/dashboard' : '/auth/signup'}
-          className="home-cta-gradient inline-flex cursor-pointer items-center justify-center rounded-full px-5 py-2 text-sm font-semibold tracking-tight text-white font-plus-jakarta-sans shadow-[0_4px_14px_rgba(6,95,70,0.35)] transition hover:-translate-y-0.5 hover:shadow-[0_6px_20px_rgba(6,95,70,0.45)] sm:text-base"
+          className="inline-flex cursor-pointer items-center justify-center rounded-full bg-[#065F46] px-5 py-2 text-sm font-semibold tracking-tight text-white font-plus-jakarta-sans shadow-[0_4px_14px_rgba(6,95,70,0.35)] transition hover:-translate-y-0.5 hover:bg-emerald-900 hover:shadow-[0_6px_20px_rgba(6,95,70,0.45)] sm:text-base"
         >
           {isLoggedIn ? 'Dashboard' : 'Get Started'}
         </Link>
@@ -57,7 +57,9 @@ export default async function HomePage() {
               <span className="block">Ready-to-deploy agents</span>
               <span className="mt-4 block">
                 built by{' '}
-                <span className="home-hero-gradient font-bold">Neurons</span>
+                <span className="inline bg-gradient-to-r from-emerald-600 via-emerald-800 to-black bg-clip-text font-bold text-transparent">
+                  Neurons
+                </span>
               </span>
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-neutral-600 sm:text-lg">
